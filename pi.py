@@ -23,15 +23,24 @@ canvas = tk.Canvas(root, width=790, height=480, bg="#3b5998")
 canvas.pack()
 camera = picamera.PiCamera()
 
-def showInstructions():
-  canvas.create_text(395, 30, text="Welcome to FaceBox!", font="Arial 20", fill="white", anchor="center")
-  canvas.create_text(15, 70, text="Instructions:", font="Arial 18", fill="#8b9dc3", anchor="w")
-  canvas.create_text(35, 110, text="1. Press the red shutter button.", fill="#dfe3ee", font="Arial 16", anchor="w")
-  canvas.create_text(35, 150, text="2. Your picture will be picture will be taken after 10 seconds.", font="Arial 16", fil="#dfe3ee", anchor="w")
-  canvas.create_text(35, 190, text="3. After the picture is taken you will be able to view it.", font="Arial 16", fill="#dfe3ee", anchor="w")
-  canvas.create_text(35, 230, text="4. Press the confirm button to upload the image to Facebook.", font="Arial 16", fill="#dfe3ee", anchor="w")
+def stroke_text(x, y, text, size, textcolor, strokecolor):
+    # make stroke text
+    canvas.create_text(x, y, text=text, font=('Arial', size, 'bold'), fill=strokecolor)
+    # make regular text
+    canvas.create_text(x, y, text=text, font=('Arial', size), fill=textcolor)
 
-  canvas.create_text(395, 350, text="Press the RED shutter button now to take a picture!", font="Arial 20", fill="white", anchor="center")
+
+def showInstructions():
+  stroke_text(350, 30, "Welcome to FaceBox!",  20, "white", "black")
+  canvas.create_text(15, 70, text="Instructions:", font="Arial 18", fill="#8b9dc3", anchor="w")
+
+  canvas.create_text(35, 110, text = "1. Press the red shutter button.\n. Your picture will be picture will be taken after 3 seconds.'\n3. After the picture is taken you will be able to view it.\n4. Press the confirm button to upload the image to Facebook.\n5. Press nothing for 10 seconds to cancel the upload.",  font="Arial 16", fill="#dfe3ee", anchor="w")
+  #canvas.create_text(35, 110, text="1. Press the red shutter button.", fill="#dfe3ee", font="Arial 16", anchor="w")
+  #canvas.create_text(35, 150, text="2. Your picture will be picture will be taken after 10 seconds.", font="Arial 16", fil="#dfe3ee", anchor="w")
+  #canvas.create_text(35, 190, text="3. After the picture is taken you will be able to view it.", font="Arial 16", fill="#dfe3ee", anchor="w")
+  #canvas.create_text(35, 230, text="4. Press the confirm button to upload the image to Facebook.", font="Arial 16", fill="#dfe3ee", anchor="w")
+
+  stroke_text(350, 350, "Press the RED shutter button now to take a picture!", 20, "white", "black")
 
 def checkButton():
   showInstructions()
@@ -81,7 +90,7 @@ def checkButton():
      
     t2 = datetime.now()
     delta = t2 - t1
-    if (delta.seconds > 15):
+    if (delta.seconds > 10):
       print "Upload not pressed within 10 seconds.. breaking now."
       break
   
