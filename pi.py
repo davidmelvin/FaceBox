@@ -81,8 +81,10 @@ def checkButton():
     uploadButton = GPIO.input(18)
     cancelButton = GPIO.input(17)
     if (uploadButton==1):
-      canvas.delete("all")
-      stroke_text(350, 10, "Uploading picture...", 12, "white", "black", "center")
+     canvas.delete("all")
+     stroke_text(350, 10, "Uploading picture...", 12, "white", "black", "center")
+     canvas.create_image(0,20, anchor="nw", image=image1)
+     canvas.update()
      print "Uploading picture.."
      graph.post(
        path = '1583747018566887/photos',
