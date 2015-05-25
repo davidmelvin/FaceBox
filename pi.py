@@ -29,16 +29,11 @@ def stroke_text(x, y, text, size, textcolor, strokecolor, anchoring):
     # make regular text
     canvas.create_text(x, y, text=text, font=('Arial', size), fill=textcolor, anchor=anchoring)
 
-
 def showInstructions():
   stroke_text(320, 40, "Welcome to FaceBox!",  22, "white", "black", "center")
   canvas.create_text(15, 100, text="Instructions:", font="Arial 18", fill="#8b9dc3", anchor="w")
 
   canvas.create_text(35, 150, text = "1. Press the red shutter button.\n2. Your picture will be picture will be taken after 3 seconds.\n3. After the picture is taken you will be able to view it.\n4. Press the confirm button to upload the image to Facebook.\n5. Press the red button or nothing for 10 seconds to cancel\nthe upload.",  font="Arial 16", fill="#dfe3ee", anchor="nw")
-  #canvas.create_text(35, 110, text="1. Press the red shutter button.", fill="#dfe3ee", font="Arial 16", anchor="w")
-  #canvas.create_text(35, 150, text="2. Your picture will be picture will be taken after 10 seconds.", font="Arial 16", fil="#dfe3ee", anchor="w")
-  #canvas.create_text(35, 190, text="3. After the picture is taken you will be able to view it.", font="Arial 16", fill="#dfe3ee", anchor="w")
-  #canvas.create_text(35, 230, text="4. Press the confirm button to upload the image to Facebook.", font="Arial 16", fill="#dfe3ee", anchor="w")
 
   stroke_text(15, 400, "Press the RED shutter button now to take a picture!", 20, "white", "black", "w")
 
@@ -86,6 +81,8 @@ def checkButton():
     uploadButton = GPIO.input(18)
     cancelButton = GPIO.input(17)
     if (uploadButton==1):
+      canvas.delete("all")
+      stroke_text(350, 10, "Uploading picture...", 12, "white", "black", "center")
      print "Uploading picture.."
      graph.post(
        path = '1583747018566887/photos',
