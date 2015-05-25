@@ -32,8 +32,6 @@ def showInstructions():
 
   canvas.create_text(300, 270, text="Press the shutter button now to take a picture!", font="Arial 20")
 
-
-
 def checkButton():
   showInstructions()
   canvas.update()
@@ -57,59 +55,18 @@ def checkButton():
   print "Waiting for upload button press"
   print "displaying photo with Tkinter"
 
-  
-  
-  
-
   imageFile = "FaceBox_Pic.jpg"
   image1 = ImageTk.PhotoImage(Image.open(imageFile))
   w = image1.width()
   h = image1.height()
    
-  # position coordinates of root 'upper left corner'
-  x = 0
-  y = 0
-
-  #root.geometry("%dx%d+%d+%d" % (w, h, x, y))
-
-  #preview = tk.Label(root, image=image1)
   canvas.create_image(0,20, anchor="nw", image=image1)
-  #preview.image = image1 # keep a reference!
-  #preview.pack()
 
   canvas.create_text(375, 10, text="Press upload to post this picture:", font="Arial 12")
 
-
-  #should work
-  # root has no image argument, so use a label as a panel
-  #panel1 = tk.Label(root, image=image1)
-  #panel1.pack(side='top', fill='both', expand='yes')
-   
-  # put a button on the image panel to test it
-  #button2 = tk.Button(panel1, text='button2')
-  #button2.pack(side='top')
-   
-  # save the panel's image from 'garbage collection'
-  #panel1.image = image1
-
-  #old stuff doesn't work
-
-#  img = Image.open("FaceBox_Pic.jpg")
-# photoImg = ImageTk.PhotoImage(img)
-  
-  #displayPic = Label(root, image=img)
-  #displayPic.image = photo # keep a reference!
-  #displayPic.pack()
-  
-  #photo = PhotoImage(file = "girl")
-  #canvas.create_image(390, 240, image = photo)
   canvas.update()
   GPIO.output(23,True)
-  #if the last reading was low and this one high, print
-
-  #for x in range (0,1000):
-    #Tkinter display
-
+  
   t1 = datetime.now()
   while True:
     input = GPIO.input(18)
@@ -134,7 +91,6 @@ def checkButton():
   GPIO.output(23,False)
 
   root.after(50,checkButton)
-
 
 root.after(50, checkButton)
 root.mainloop()
