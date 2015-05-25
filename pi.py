@@ -25,13 +25,13 @@ camera = picamera.PiCamera()
 
 def showInstructions():
   canvas.create_text(375, 20, text="Welcome to FaceBox!", font="Arial 20", fill="white")
-  canvas.create_text(50, 50, text="Instructions:", font="Arial 18", fill="#dfe3ee", anchor="w")
-  canvas.create_text(75, 80, text="1. Press the red shutter button.", fill="d7f7f7", font="Arial 12", anchor="w")
-  canvas.create_text(75, 120, text="2. Your picture will be picture will be taken after 10 seconds.", font="Arial 16", fil="#7f7f7", anchor="w")
-  canvas.create_text(75, 160, text="3. After the picture is taken you will be able to view it.", font="Arial 16", fill="#7f7f7", anchor="w")
-  canvas.create_text(75, 200, text="4. Press the confirm button to upload the image to Facebook.", font="Arial 16", fill="#7f7f7", anchor="w")
+  canvas.create_text(50, 50, text="Instructions:", font="Arial 18", fill="#8b9dc3", anchor="w")
+  canvas.create_text(75, 80, text="1. Press the red shutter button.", fill="#dfe3ee", font="Arial 12", anchor="w")
+  canvas.create_text(75, 120, text="2. Your picture will be picture will be taken after 10 seconds.", font="Arial 16", fil="#dfe3ee", anchor="w")
+  canvas.create_text(75, 160, text="3. After the picture is taken you will be able to view it.", font="Arial 16", fill="#dfe3ee", anchor="w")
+  canvas.create_text(75, 200, text="4. Press the confirm button to upload the image to Facebook.", font="Arial 16", fill="#dfe3ee", anchor="w")
 
-  canvas.create_text(375, 300, text="Press the RED shutter button now to take a picture!", font="Arial 22", fill="#7f7f7" )
+  canvas.create_text(375, 300, text="Press the RED shutter button now to take a picture!", font="Arial 22", fill="white" )
 
 def checkButton():
   showInstructions()
