@@ -19,18 +19,20 @@ GPIO.output(22,True)
 GPIO.output(23,False)
 
 root = tk.Tk()
+root.configure(background='#3b5998')
 canvas = tk.Canvas(root, width=790, height=480)
 canvas.pack()
 camera = picamera.PiCamera()
 
 def showInstructions():
-  canvas.create_text(300, 10, text="Hi! Welcome to FaceBox. Here are some instructions.", font="Arial 16")
-  canvas.create_text(300, 50, text="1. To Start, press the shutter button.", font="Arial 12")
-  canvas.create_text(300, 80, text="2. Your picture will be picture will be taken after 10 seconds.", font="Arial 12")
-  canvas.create_text(300, 110, text="3. After the picture is taken you will be able to view it.", font="Arial 12")
-  canvas.create_text(300, 140, text="4. Press the confirm button to upload the image to Facebook.", font="Arial 12")
+  canvas.create_text(375, 10, text="Welcome to FaceBox.", font="Arial 20", fill="white")
+  canvas.create_text(50, 50, text="Instructions:", font="Arial 18", fill="white", anchor="w")
+  canvas.create_text(75, 80, text="1. Press the red shutter button.", font="Arial 12",)
+  canvas.create_text(75, 120, text="2. Your picture will be picture will be taken after 10 seconds.", font="Arial 16", fill="white")
+  canvas.create_text(75, 160, text="3. After the picture is taken you will be able to view it.", font="Arial 16", fill="white")
+  canvas.create_text(75, 200, text="4. Press the confirm button to upload the image to Facebook.", font="Arial 16", fill="white")
 
-  canvas.create_text(300, 270, text="Press the shutter button now to take a picture!", font="Arial 20")
+  canvas.create_text(375, 300, text="Press the RED shutter button now to take a picture!", font="Arial 24")
 
 def checkButton():
   showInstructions()
@@ -38,12 +40,11 @@ def checkButton():
   while True:
     shutter_input = GPIO.input(17)
     if (shutter_input==1):
-      GPIO.output(22,False) #Turn Shutter Button LED off during upload/confirm phase
-      print "Shutter button pressed"
-      print "Taking photo in three seconds"
-
       canvas.delete("all")
-
+      GPIO.output(22,False) #Turn Shutter Button LED off during upload/confirm phase
+      print "Shutter button pressed, taking photo in three seconds"
+      
+      canvas.create_text(375, 10, text="Here is a preview of your picture:", font="Arial 12")
       camera.resolution = (750,450)
       camera.start_preview()
       time.sleep(5)
@@ -62,7 +63,7 @@ def checkButton():
    
   canvas.create_image(0,20, anchor="nw", image=image1)
 
-  canvas.create_text(375, 10, text="Press upload to post this picture:", font="Arial 12")
+  canvas.create_text(375, 10, text="Press the blue button to post this picture:", font="Arial 12", fill = "white")
 
   canvas.update()
   GPIO.output(23,True)
@@ -78,8 +79,7 @@ def checkButton():
      )
      print "Picture uploaded!"
      break
-     #tkinter stop displaying 
-
+     
     t2 = datetime.now()
     delta = t2 - t1
     if (delta.seconds > 15):
