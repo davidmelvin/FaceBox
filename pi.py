@@ -33,7 +33,7 @@ def showInstructions():
   stroke_text(320, 40, "Welcome to FaceBox!",  22, "white", "black", "center")
   canvas.create_text(15, 100, text="Instructions:", font="Arial 18", fill="#8b9dc3", anchor="w")
 
-  canvas.create_text(35, 150, text = "1. Press the red shutter button.\n2. Your picture will be picture will be taken after 3 seconds.\n3. After the picture is taken you will be able to view it.\n4. Press the confirm button to upload the image to Facebook.\n5. Press the red button or nothing for 10 seconds to cancel\nthe upload.",  font="Arial 16", fill="#dfe3ee", anchor="nw")
+  canvas.create_text(35, 150, text = "1. Press the red shutter button.\n2. Your picture will be taken after 3 seconds.\n3. After the picture is taken you will be able to view it.\n4. Press the blue confirm button to upload the image to Facebook.\n5. Press the red button to cancel the upload.",  font="Arial 16", fill="#dfe3ee", anchor="nw")
 
   stroke_text(15, 400, "Press the RED shutter button now to take a picture!", 20, "white", "black", "w")
 
